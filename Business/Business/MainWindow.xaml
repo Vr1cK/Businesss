@@ -1,0 +1,52 @@
+﻿<Window x:Class="Business.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Business"
+        xmlns:col="clr-namespace:System.Collections;assembly=mscorlib"
+        
+        
+        mc:Ignorable="d"
+        Title="MainWindow" Height="900" Width="1600">
+    <Grid>
+        <Button x:Name="ShowWorkingTableButton" Content="Показать или скрыть таблицу работников" HorizontalAlignment="Left" Margin="355,678,0,0" VerticalAlignment="Top" Width="237" RenderTransformOrigin="0.5,0.5" Height="38" Click="ShowWorkingTableButton_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0"/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="StartSetWorkerButton" Content="Зарегистрировать работника" HorizontalAlignment="Center" Margin="0,678,0,0" VerticalAlignment="Top" Height="38" Width="236" Click="StartSetWorkerButton_Click"/>
+        <Button x:Name="EndSetWorkerButton" Content="Зарегистрировать работника" HorizontalAlignment="Left" Margin="560,459,0,0" VerticalAlignment="Top" Height="22" Width="358" Click="EndSetWorkerButton_Click"/>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox x:Name="SetNameWorker" HorizontalAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap" Text="Введите имя работника" VerticalAlignment="Top" Width="120" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+            <TextBox x:Name="SetPostWorker" AcceptsReturn="True" TextWrapping="Wrap" Text="Введите должность работника" Width="120" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+            <TextBox x:Name="SetPhoneWorker" HorizontalAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap" Text="Введите телефон работника" VerticalAlignment="Top" Width="120" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+            <TextBox x:Name="SetEmailWorker" HorizontalAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap" Text="Введите почту работника" VerticalAlignment="Top" Width="120" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+        </StackPanel>
+
+        <Button x:Name="StartDeleteWorkerButton" Content="Удалить работника из базы данных" HorizontalAlignment="Left" Margin="37,678,0,0" VerticalAlignment="Top" Width="237" RenderTransformOrigin="0.5,0.5" Height="38" Click="StartDeleteWorkerButton_Click"/>
+        <Button x:Name="EndDeleteWorkerButton" Content="Удалить работника из базы данных" HorizontalAlignment="Left" Margin="560,580,0,0" VerticalAlignment="Top" Width="209" RenderTransformOrigin="0.5,0.5" Height="20" Click="EndDeleteWorkerButton_Click"/>
+        <TextBox x:Name="SetPhoneWorkerForDelete" HorizontalAlignment="Left" Margin="560,527,0,0" TextWrapping="Wrap" Text="Введите телефон работника для удаления по шаблону (8-***-***-**-**) без тире." VerticalAlignment="Top" Width="296" Height="53" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+        <ScrollViewer x:Name="ScrollViewerWorkerTable" Margin="0,0,756,524">
+            <DataGrid x:Name="WorkerTable" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Header="FullName" Binding="{Binding FullName}" />
+                    <DataGridTextColumn Header="Phone" Binding="{Binding Phone}"/>
+                    <DataGridTextColumn Header="Age" Binding="{Binding Age}"/>
+                    <DataGridTextColumn Header="PostName" Binding="{Binding PostName}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+        <TextBox x:Name="SearchInTableTextBox" HorizontalAlignment="Left" Margin="531,360,0,0" TextWrapping="Wrap" Text="Введите номер телефона работника" VerticalAlignment="Top" Width="212" PreviewMouseLeftButtonDown="SetWorker_MouseDown"/>
+        <Button x:Name="SearchInTableButton" Content="Найти" HorizontalAlignment="Left" Margin="743,360,0,0" VerticalAlignment="Top" Height="18" Width="84"/>
+        <Button x:Name="CancelDeleteWorkerButton" Content="Отмена" HorizontalAlignment="Left" Margin="769,580,0,0" VerticalAlignment="Top" Width="87" Click="CancelDeleteWorkerButton_Click"/>
+        <Button x:Name="CancelSetWorkerButton" Content="Отмена" HorizontalAlignment="Left" Margin="918,459,0,0" VerticalAlignment="Top" Width="122" Click="CancelSetWorkerButton_Click"/>
+    </Grid>
+</Window>
