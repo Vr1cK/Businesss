@@ -23,5 +23,5 @@ namespace Business
         public virtual Post? Post { get; set; }
 
         public string? PostName { get; set; }
-    }
+    } 
 }
